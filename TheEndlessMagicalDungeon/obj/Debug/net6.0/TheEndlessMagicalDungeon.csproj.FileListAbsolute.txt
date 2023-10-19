@@ -1,0 +1,15 @@
+C:\Users\samuel.antonsson\Desktop\PersonalCode\TEMD\TheEndlessMagicalDungeon\bin\Debug\net6.0\TheEndlessMagicalDungeon.exe
+C:\Users\samuel.antonsson\Desktop\PersonalCode\TEMD\TheEndlessMagicalDungeon\bin\Debug\net6.0\TheEndlessMagicalDungeon.deps.json
+C:\Users\samuel.antonsson\Desktop\PersonalCode\TEMD\TheEndlessMagicalDungeon\bin\Debug\net6.0\TheEndlessMagicalDungeon.runtimeconfig.json
+C:\Users\samuel.antonsson\Desktop\PersonalCode\TEMD\TheEndlessMagicalDungeon\bin\Debug\net6.0\TheEndlessMagicalDungeon.dll
+C:\Users\samuel.antonsson\Desktop\PersonalCode\TEMD\TheEndlessMagicalDungeon\bin\Debug\net6.0\TheEndlessMagicalDungeon.pdb
+C:\Users\samuel.antonsson\Desktop\PersonalCode\TEMD\TheEndlessMagicalDungeon\obj\Debug\net6.0\TheEndlessMagicalDungeon.csproj.AssemblyReference.cache
+C:\Users\samuel.antonsson\Desktop\PersonalCode\TEMD\TheEndlessMagicalDungeon\obj\Debug\net6.0\TheEndlessMagicalDungeon.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\samuel.antonsson\Desktop\PersonalCode\TEMD\TheEndlessMagicalDungeon\obj\Debug\net6.0\TheEndlessMagicalDungeon.AssemblyInfoInputs.cache
+C:\Users\samuel.antonsson\Desktop\PersonalCode\TEMD\TheEndlessMagicalDungeon\obj\Debug\net6.0\TheEndlessMagicalDungeon.AssemblyInfo.cs
+C:\Users\samuel.antonsson\Desktop\PersonalCode\TEMD\TheEndlessMagicalDungeon\obj\Debug\net6.0\TheEndlessMagicalDungeon.csproj.CoreCompileInputs.cache
+C:\Users\samuel.antonsson\Desktop\PersonalCode\TEMD\TheEndlessMagicalDungeon\obj\Debug\net6.0\TheEndlessMagicalDungeon.dll
+C:\Users\samuel.antonsson\Desktop\PersonalCode\TEMD\TheEndlessMagicalDungeon\obj\Debug\net6.0\refint\TheEndlessMagicalDungeon.dll
+C:\Users\samuel.antonsson\Desktop\PersonalCode\TEMD\TheEndlessMagicalDungeon\obj\Debug\net6.0\TheEndlessMagicalDungeon.pdb
+C:\Users\samuel.antonsson\Desktop\PersonalCode\TEMD\TheEndlessMagicalDungeon\obj\Debug\net6.0\TheEndlessMagicalDungeon.genruntimeconfig.cache
+C:\Users\samuel.antonsson\Desktop\PersonalCode\TEMD\TheEndlessMagicalDungeon\obj\Debug\net6.0\ref\TheEndlessMagicalDungeon.dll
