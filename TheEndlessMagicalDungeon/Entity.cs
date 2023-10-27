@@ -11,6 +11,7 @@ public class Entity : Effects
     public int critChance;
 
     public int baseDamage;
+    public int damage;
 
     public char elementAffiliation;
     public string printAffiliation = "";

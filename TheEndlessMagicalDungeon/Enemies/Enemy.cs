@@ -1,14 +1,16 @@
 using System.Diagnostics.Contracts;
 using SpellsLogic;
 using EntityLogic;
+using PlayerLogic;
 
 namespace EnemyLogic
 {
-    public class Enemy: Entity
+    public class Enemy : Entity
     {
         public List<Spell> spells = new();
         public List<String> names = new();
         List<Char> affiliations = new();
+        Player player;
 
 
         public Random random = new();
@@ -21,6 +23,11 @@ namespace EnemyLogic
             affiliations.Add('N');
 
             spells.Add(new NoSpell());
+        }
+
+        public void setPlayer(Player p)
+        {
+            player = p;
         }
 
 
@@ -63,27 +70,29 @@ namespace EnemyLogic
             name = names[index];
         }
 
-
-        //Decides the attack of the enemy
+        
+        //Attacks the player
         public void Attack()
         {
-
-        }
-
-
-        //Makes it so that the enemy can take damage
-        public void TakeDamage(int damage, Spell usedSpell)
-        {
-            if(usedSpell.noSpellUsed == true) //If physical attack is used
+            Console.ForegroundColor = ConsoleColor.White;
+            if(player.shieldBlockAmount == 0) //If player didn't use shield
             {
-                health -= damage;
-            }else //If spell is used
+                player.health -= damage;
+                Console.WriteLine($"The enemy attack you dealing {damage} damage");
+                Console.ReadKey();
+            }else if(damage - player.shieldBlockAmount > 0) //If player used shield but didn't block all damage
             {
-
+                player.health -= damage - player.shieldBlockAmount;
+                Console.WriteLine($"You blocked {player.shieldBlockAmount} damage from the attack but was still hit for {damage - player.shieldBlockAmount}");
+                player.shieldBlockAmount = 0;
+                Console.ReadKey();
+            }else if(damage - player.shieldBlockAmount <= 0) //If player used shield to blcok all damage
+            {
+                Console.WriteLine("You used your shield to block all damage");
+                player.shieldBlockAmount = 0;
+                Console.ReadKey();
             }
         }
     }
-
-    
-
 }
+

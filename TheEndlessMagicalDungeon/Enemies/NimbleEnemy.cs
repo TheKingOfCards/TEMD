@@ -9,7 +9,7 @@ public class NibmleEnemy : Enemy
                 new Pyroorb(),
                 new Pyroquake()
             };
-            
+
         maxHealth = 50;
         health = maxHealth;
 
