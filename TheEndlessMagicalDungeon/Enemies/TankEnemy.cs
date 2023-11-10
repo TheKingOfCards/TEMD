@@ -4,10 +4,12 @@ public class TankEnemy : Enemy
     public TankEnemy()
     {
         maxHealth = 150;
-        health = maxHealth;
+        Hp = maxHealth;
+        baseDamage = 30;
 
         dodgeChance = 10;
         critChance = 5;
+        critAmount = 2;
 
         names.Add("The Ugly Troll");
         names.Add("Giant");

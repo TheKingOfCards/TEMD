@@ -6,7 +6,8 @@ public class ElementalEnemy : Enemy
     public ElementalEnemy()
     {
         maxHealth = 75;
-        health = maxHealth;
+        Hp = maxHealth;
+        baseDamage = 20;
 
         elementalAffiliation.Add('F');
         elementalAffiliation.Add('E');

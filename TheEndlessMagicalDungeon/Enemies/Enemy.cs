@@ -74,19 +74,27 @@ namespace EnemyLogic
         //Attacks the player
         public void Attack()
         {
+            if(CalcCrit()) //Adds a multiplier to damage if CalcCrit() is true
+            { 
+                damage = baseDamage * critAmount;
+            }else
+            {
+                damage = baseDamage;
+            }
+
             Console.ForegroundColor = ConsoleColor.White;
             if(player.shieldBlockAmount == 0) //If player didn't use shield
             {
-                player.health -= damage;
+                player.Hp -= damage;
                 Console.WriteLine($"The enemy attack you dealing {damage} damage");
                 Console.ReadKey();
             }else if(damage - player.shieldBlockAmount > 0) //If player used shield but didn't block all damage
             {
-                player.health -= damage - player.shieldBlockAmount;
+                player.Hp -= damage - player.shieldBlockAmount;
                 Console.WriteLine($"You blocked {player.shieldBlockAmount} damage from the attack but was still hit for {damage - player.shieldBlockAmount}");
                 player.shieldBlockAmount = 0;
                 Console.ReadKey();
-            }else if(damage - player.shieldBlockAmount <= 0) //If player used shield to blcok all damage
+            }else if(damage - player.shieldBlockAmount <= 0) //If player used shield to block all damage
             {
                 Console.WriteLine("You used your shield to block all damage");
                 player.shieldBlockAmount = 0;
@@ -95,4 +103,3 @@ namespace EnemyLogic
         }
     }
 }
-

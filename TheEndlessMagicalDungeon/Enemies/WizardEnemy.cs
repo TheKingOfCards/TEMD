@@ -10,7 +10,8 @@ public class WizardEnemy : Enemy
             
         };
         maxHealth = 75;
-        health = maxHealth;
+        Hp = maxHealth;
+        baseDamage = 15;
 
         names.Add("Fladnag The Grey");
         names.Add("Hotter Parry The Boy Who Died");

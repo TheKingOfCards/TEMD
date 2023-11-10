@@ -5,6 +5,7 @@ using System.Diagnostics.Contracts;
 using EnemyLogic;
 using EffectsLogic;
 using WeaponsLogic;
+using FightingLogic;
 
 namespace PlayerLogic
 {
@@ -45,8 +46,8 @@ namespace PlayerLogic
 
         public Player()
         {
-            maxHealth = 10;
-            health = maxHealth;
+            maxHealth = 100;
+            Hp = maxHealth;
             mana = maxMana;
             
             healthPotions = maxHealthPotions;
@@ -89,7 +90,7 @@ namespace PlayerLogic
             {
                 if (playerInput == '1')
                 {
-                    Console.WriteLine("1. Attack \n2. Shield \n3. Dodge");
+                    Console.WriteLine("1. Attack \n2. Shield \n3. Dodge \n4. Go Back \n");
                     UsePhysical(Console.ReadKey().KeyChar);
                 }
                 else if (playerInput == '2')
@@ -137,9 +138,12 @@ namespace PlayerLogic
         //Player can either attack, use spells or get a higher dodge chance
         void UsePhysical(char physicalSelect)
         {
+            Console.CursorLeft--;
             if (physicalSelect == '1') //Attack
             {
-                currentEnemy.health -= currentWeapon.baseDamage;
+                currentEnemy.Hp -= currentWeapon.baseDamage;
+                Console.WriteLine($"You attacked {currentEnemy.name} with your {currentWeapon.name} dealing {currentWeapon.baseDamage}");
+                Console.ReadKey();
             }
             else if (physicalSelect == '2') //Shield
             {
@@ -148,6 +152,9 @@ namespace PlayerLogic
             else if (physicalSelect == '3') //Dodge
             {
                 dodgeChance += 10;
+            }else if(physicalSelect >= '4') //Go back to previous menu
+            {
+                return;
             }
         }
 
@@ -155,16 +162,20 @@ namespace PlayerLogic
         //Uses healthpotions or manapotions
         void UsePotions(char potionSelect)
         {
+            Console.CursorLeft--;
             if (potionSelect == '1') //Heals the player
             {
                 if (healthPotions > 0)
                 {
                     healthPotions--;
-                    health += healthPotionHealAmount;
-                    if (health > maxHealth)
+                    Hp += healthPotionHealAmount;
+                    if (Hp > maxHealth)
                     {
-                        health = maxHealth;
+                        Hp = maxHealth;
                     }
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine($"You healed {healthPotionHealAmount} hp points");
+                    Console.ReadKey();
                 }
                 else
                 {
@@ -182,6 +193,7 @@ namespace PlayerLogic
                     {
                         mana = maxMana;
                     }
+                    Console.WriteLine($"You restored {manaPotionRaiseAmount} mana points");
                 }
                 else
                 {

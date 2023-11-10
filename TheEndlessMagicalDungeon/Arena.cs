@@ -49,6 +49,7 @@ public class Arena
         printAllStats(player, enemy);
         player.WriteActionChoices();
         char input = Console.ReadKey().KeyChar;
+
         printAllStats(player, enemy);
         player.Action(input);
     }
@@ -66,7 +67,7 @@ public class Arena
         Console.Clear();
         //Writes player stats
         Console.ForegroundColor = ConsoleColor.White;
-        Console.WriteLine($"[{player.name}] [Hp: {player.health}] [Mana: {player.mana}] [{player.printAffiliation}]");
+        Console.WriteLine($"[{player.name}] [Hp: {player.Hp}] [Mana: {player.mana}] [{player.printAffiliation}]");
         Console.Write("Potions: ");
         Console.ForegroundColor = ConsoleColor.Red;
         Console.Write($"{player.healthPotions} ");
@@ -74,6 +75,6 @@ public class Arena
         Console.WriteLine($"{player.manaPotions}");
         //Writes enemy stats
         Console.ForegroundColor = ConsoleColor.DarkRed;
-        Console.WriteLine($"Enemy: [{enemy.name}] [Hp: {enemy.health}] [{enemy.printAffiliation}]\n ");
+        Console.WriteLine($"Enemy: [{enemy.name}] [Hp: {enemy.Hp}] [{enemy.printAffiliation}]\n ");
     }
 }

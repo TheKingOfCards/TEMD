@@ -5,7 +5,7 @@ public class Halberd: Weapon
     public Halberd()
     {
         name = "Halberd";
-        baseDamage = 30;
+        baseDamage = 100;
         baseCritChance = 15;
     }
 }

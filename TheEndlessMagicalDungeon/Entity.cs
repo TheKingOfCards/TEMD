@@ -4,22 +4,40 @@ using EffectsLogic;
 public class Entity : Effects
 {
     public string name = "";
-    public int health;
+    private int _hp = 0;
     public int maxHealth;
+    public int Hp
+    {
+        set
+        {
+            _hp = value;
+            if (_hp < 0)
+            {
+                _hp = 0;
+            }
+            if (_hp > maxHealth)
+            {
+                _hp = maxHealth;
+            }
+        }
+        get => _hp;
+    }
 
     public int dodgeChance;
     public int critChance;
+    public int critAmount;
 
     public int baseDamage;
     public int damage;
 
     public char elementAffiliation;
     public string printAffiliation = "";
+    Random random = new();
 
     //Checks if the enemy is alive
     public bool GetAlive()
     {
-        if (health <= 0)
+        if (Hp <= 0)
         {
             return false;
         }
@@ -32,6 +50,7 @@ public class Entity : Effects
     //Calculates if the entity dodges
     public bool CalcDodge()
     {
+        int index = random.Next(0, 10);
         return true;
         return false;
     }
@@ -40,8 +59,16 @@ public class Entity : Effects
     //Calculates if the entity gets a critical attack 
     public bool CalcCrit()
     {
-        return true;
-        return false;
+        int index = random.Next(0, 10);
+
+        if (index <= critChance)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
 }
