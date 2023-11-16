@@ -27,7 +27,7 @@ namespace PlayerLogic
         public int level = 0;
         public int perkPoints = 0;
 
-        char characterType;
+        char playerClass;
 
         public int healthPotions = 0;
         int maxHealthPotions = 5;
