@@ -23,7 +23,6 @@ public class Entity : Effects
         get => _hp;
     }
 
-    public int dodgeChance;
     public int critChance;
     public int critAmount;
 
@@ -48,11 +47,18 @@ public class Entity : Effects
     }
 
     //Calculates if the entity dodges
-    public bool CalcDodge()
+    public bool CalcDodge(int baseDodge)
     {
-        int index = random.Next(0, 10);
-        return true;
-        return false;
+        int index = random.Next(1, 11);
+
+        if (index <= baseDodge)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
 

@@ -38,7 +38,7 @@ public class Arena
         }
         if(player.GetAlive() == false)
         {
-            player.Dead();
+            Player.Dead();
         }
 
     }
@@ -46,12 +46,17 @@ public class Arena
 
     void PlayerTurn()
     {
-        printAllStats(player, enemy);
-        player.WriteActionChoices();
-        char input = Console.ReadKey().KeyChar;
+        player.playerTurn = true;
+        while(player.playerTurn == true)
+        {
+            player.playerTurn = false;
+            printAllStats(player, enemy);
+            player.WriteActionChoices();
+            char input = Console.ReadKey().KeyChar;
 
-        printAllStats(player, enemy);
-        player.Action(input);
+            printAllStats(player, enemy);
+            player.Action(input);
+        }
     }
 
 

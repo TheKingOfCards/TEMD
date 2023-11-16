@@ -15,6 +15,9 @@ namespace PlayerLogic
         public int mana = 0;
         int maxMana = 80;
 
+        public int dodgeChance;
+        int setdodgeChance = 5;
+
         public int shieldBlockAmount;
         int setShieldBlockAmount = 10;
 
@@ -34,11 +37,11 @@ namespace PlayerLogic
         int maxManaPotions = 3;
         int manaPotionRaiseAmount = 15;
 
-        public bool attackedEnemy = false;
+        public bool playerTurn = false;
 
         public List<Spell> spells = new();
         public List<Spell> inventorySpells = new();
-        public List<Weapon> inventoryWeapons = new(); 
+        public List<Weapon> inventoryWeapons = new();
         Weapon currentWeapon;
 
         Enemy currentEnemy;
@@ -49,7 +52,7 @@ namespace PlayerLogic
             maxHealth = 100;
             Hp = maxHealth;
             mana = maxMana;
-            
+
             healthPotions = maxHealthPotions;
             manaPotions = maxManaPotions;
 
@@ -102,17 +105,10 @@ namespace PlayerLogic
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.Write("1. Health Potion");
                     Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.WriteLine("\n2. Mana Potion");
+                    Console.Write("\n2. Mana Potion");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("\n3. Go Back");
                     UsePotions(Console.ReadKey().KeyChar);
-                }
-                else if (playerInput == '4')
-                {
-                    Console.WriteLine("1. Perks");
-                    Perks();
-                }
-                else
-                {
-                    return;
                 }
             }
             else if (currentState == PlayerState.isLooting) //The actions the player can take while looting
@@ -151,9 +147,11 @@ namespace PlayerLogic
             }
             else if (physicalSelect == '3') //Dodge
             {
-                dodgeChance += 10;
-            }else if(physicalSelect >= '4') //Go back to previous menu
+                dodgeChance = setdodgeChance;
+            }
+            else //Go back to previous menu
             {
+                playerTurn = true;
                 return;
             }
         }
@@ -200,6 +198,10 @@ namespace PlayerLogic
                     Console.WriteLine("\nYou dont have any mana potions left");
                     Console.ReadKey();
                 }
+            }else
+            {
+                playerTurn = true;
+                return;
             }
         }
 
@@ -226,7 +228,7 @@ namespace PlayerLogic
         }
 
 
-        public void Dead()
+        public static void Dead()
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.DarkRed;
