@@ -1,6 +1,3 @@
-namespace EntityLogic;
-using EffectsLogic;
-
 public class Entity : Effects
 {
     public string name = "";

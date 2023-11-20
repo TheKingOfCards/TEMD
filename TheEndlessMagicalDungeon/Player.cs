@@ -1,17 +1,17 @@
+using System.Security.Authentication;
 using System;
-using SpellsLogic;
-using EntityLogic;
 using System.Diagnostics.Contracts;
-using EnemyLogic;
-using EffectsLogic;
-using WeaponsLogic;
 using FightingLogic;
+using System.Runtime.ExceptionServices;
 
 namespace PlayerLogic
 {
     public class Player : Entity
     {
         public PlayerState currentState = PlayerState.isFighting;
+        public PlayerClass currentClass;
+        public PlayerElement currentElement;
+
         public int mana = 0;
         int maxMana = 80;
 
@@ -26,8 +26,6 @@ namespace PlayerLogic
         public int coins = 0;
         public int level = 0;
         public int perkPoints = 0;
-
-        char playerClass;
 
         public int healthPotions = 0;
         int maxHealthPotions = 5;
@@ -45,6 +43,7 @@ namespace PlayerLogic
         Weapon currentWeapon;
 
         Enemy currentEnemy;
+        TextHandler tH;
 
 
         public Player()
@@ -55,6 +54,8 @@ namespace PlayerLogic
 
             healthPotions = maxHealthPotions;
             manaPotions = maxManaPotions;
+
+            tH = new TextHandler();
 
             inventoryWeapons.Add(new Zweihander());
             currentWeapon = inventoryWeapons[0];
@@ -102,12 +103,7 @@ namespace PlayerLogic
                 }
                 else if (playerInput == '3')
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.Write("1. Health Potion");
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.Write("\n2. Mana Potion");
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("\n3. Go Back");
+                    tH.PotionSelect();
                     UsePotions(Console.ReadKey().KeyChar);
                 }
             }
@@ -247,6 +243,22 @@ namespace PlayerLogic
             inBlacksmith,
             inMagicShop,
             dead
+        }
+
+        public enum PlayerClass
+        {
+            barb,
+            wizard,
+            knight,
+            assasin
+        }
+
+        public enum PlayerElement
+        {
+            fire,
+            water,
+            earth,
+            air
         }
     }
 }

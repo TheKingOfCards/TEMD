@@ -1,5 +1,3 @@
-namespace EffectsLogic;
-
 public class Effects
 {
     public int burningTime = 3;

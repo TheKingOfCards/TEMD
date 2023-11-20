@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Diagnostics.Contracts;
 using PlayerLogic;
 
@@ -56,19 +57,19 @@ public class CharacterCreation
             choosing = false;
             if (input == '1') //Water
             {
-                player.elementAffiliation = 'W';
+                player.currentElement = Player.PlayerElement.water;
             }
             else if (input == '2') //Earth
             {
-                player.elementAffiliation = 'E';
+                player.currentElement = Player.PlayerElement.earth;
             }
-            else if (input == '3') //Earth
+            else if (input == '3') //Fire
             {
-                player.elementAffiliation = 'F';
+                player.currentElement = Player.PlayerElement.fire;
             }
-            else if (input == '4') //Earth
+            else if (input == '4') //Air
             {
-                player.elementAffiliation = 'A';
+                player.currentElement = Player.PlayerElement.air;
             }
             else
             {
@@ -82,6 +83,36 @@ public class CharacterCreation
 
     void ChooseClass()
     {
-        
+        Console.WriteLine("Which class do you want to be?");
+        Console.WriteLine("1. Barbarian \n2. Knight \n3. Wizard \n4. Assasin");
+        bool choosing = true;
+
+        while (choosing == true)
+        {
+            choosing = false;
+            char input = Console.ReadKey().KeyChar;
+
+            if (input == '1')
+            {
+                player.currentClass = Player.PlayerClass.barb;
+            }
+            else if (input == '2')
+            {
+                player.currentClass = Player.PlayerClass.knight;
+            }
+            else if (input == '3')
+            {
+                player.currentClass = Player.PlayerClass.wizard;
+            }
+            else if (input == '4')
+            {
+                player.currentClass = Player.PlayerClass.assasin;
+            }
+            else
+            {
+                Console.WriteLine("\nUse one of the options above idiota");
+                choosing = true;
+            }
+        }
     }
 }

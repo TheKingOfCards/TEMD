@@ -1,4 +1,3 @@
-using EnemyLogic;
 public class ElementalEnemy : Enemy
 {
     List<Char> elementalAffiliation = new();

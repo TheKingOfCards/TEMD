@@ -1,4 +1,3 @@
-using EnemyLogic;
 using PlayerLogic;
 
 namespace FightingLogic;

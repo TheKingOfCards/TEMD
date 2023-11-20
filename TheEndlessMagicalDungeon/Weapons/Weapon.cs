@@ -1,5 +1,3 @@
-namespace WeaponsLogic;
-
 public class Weapon
 {
     public string name = "";

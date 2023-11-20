@@ -1,6 +1,3 @@
-using EnemyLogic;
-using SpellsLogic;
-
 public class WizardEnemy : Enemy
 {
     public WizardEnemy()

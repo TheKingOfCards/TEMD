@@ -1,5 +1,3 @@
-using EnemyLogic;
-
 public class FlyingEnemy : Enemy
 {
 

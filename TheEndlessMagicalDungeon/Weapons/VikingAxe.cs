@@ -1,5 +1,3 @@
-using WeaponsLogic;
-
 public class VikingAxe: Weapon
 {
     public VikingAxe()

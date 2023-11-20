@@ -1,5 +1,3 @@
-using EnemyLogic;
-using SpellsLogic;
 public class NibmleEnemy : Enemy
 {
     public NibmleEnemy()

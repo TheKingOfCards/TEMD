@@ -1,4 +1,3 @@
-using EnemyLogic;
 public class TankEnemy : Enemy
 {
     public TankEnemy()

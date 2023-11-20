@@ -1,5 +1,3 @@
-using WeaponsLogic;
-
 public class Dagger: Weapon
 {
     public Dagger()
