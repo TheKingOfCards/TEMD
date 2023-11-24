@@ -1,5 +1,4 @@
 ﻿using System.Net.Mime;
-using PlayerLogic;
 using FightingLogic;
 
 
@@ -12,15 +11,14 @@ Enemy enemy = new TankEnemy();
 CharacterCreation CC = new(player);
 
 
-bool start = true;
-bool playing = false;
+bool start = false;
+bool playing = true;
 
 
 //The start of the game, choose type, name, affiliation and information
 while (start == true)
 {
     CC.Creation();
-    tH.StartText();
     Console.ReadKey();
     start = false;
     playing = true;

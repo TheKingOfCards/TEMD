@@ -7,5 +7,6 @@ public class Combustion: Spell
         damage = 35;
         canSetOnFire = true;
         manaCost = 40;
+        color = ConsoleColor.Red;
     }
 }

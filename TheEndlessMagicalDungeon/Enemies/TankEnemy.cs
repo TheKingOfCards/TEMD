@@ -12,7 +12,7 @@ public class TankEnemy : Enemy
 
         names.Add("The Ugly Troll");
         names.Add("Giant");
-        names.Add("Titan");
+        names.Add("Attack Titan");
         names.Add("Beast");
         names.Add("The Hulking Goliath");
 

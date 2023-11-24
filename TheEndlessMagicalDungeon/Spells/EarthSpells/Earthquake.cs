@@ -7,5 +7,6 @@ public class Earthquake: Spell
         damage = 15;
         hasDodgeChanceNegation = true;
         dodgeChanceNegation = 20;
+        color = ConsoleColor.DarkYellow;
     }
 }

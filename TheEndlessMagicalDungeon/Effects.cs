@@ -3,10 +3,14 @@ public class Effects
     public int burningTime = 3;
     public bool isBurning = false;
 
-
     public void Tick()
     {
-        //Burning effect begin
+        Burning();
+    }
+
+
+    void Burning()
+    {
         if (isBurning == true) // Checks if player is burning and lowers the time if they are
         {
             burningTime--;
@@ -21,6 +25,5 @@ public class Effects
         {
             isBurning = false;
         }
-        //Burning effect end
     }
 }

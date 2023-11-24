@@ -1,5 +1,3 @@
-using PlayerLogic;
-
 namespace FightingLogic;
 
 public class Arena
@@ -71,7 +69,7 @@ public class Arena
         Console.Clear();
         //Writes player stats
         Console.ForegroundColor = ConsoleColor.White;
-        Console.WriteLine($"[{player.name}] [Hp: {player.Hp}] [Mana: {player.mana}] [{player.printAffiliation}]");
+        Console.WriteLine($"[{player.name}] [Hp: {player.Hp}] [Mana: {player.Mana}] [{player.printAffiliation}]");
         Console.Write("Potions: ");
         Console.ForegroundColor = ConsoleColor.Red;
         Console.Write($"{player.healthPotions} ");

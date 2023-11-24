@@ -6,5 +6,6 @@ public class WaterOctopus: Spell
         damage = 30;
         description = $"Create a octopus from water and hit the enemy with your 8 arms dealing {this.damage}";
         manaCost = 35;
+        color = ConsoleColor.Blue;
     }
 }

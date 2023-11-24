@@ -4,8 +4,6 @@ public class NibmleEnemy : Enemy
     {
         spells = new List<Spell>
             {
-                new Pyroorb(),
-                new Pyroquake()
             };
 
         maxHealth = 50;

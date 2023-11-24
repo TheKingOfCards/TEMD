@@ -7,5 +7,6 @@ public class Pyroquake: Spell
         description = "Light the floor under the enemy on fire - deals no damage when casting but will set the enemy on fire";
         damage = 0;
         manaCost = 30;
+        color = ConsoleColor.Red;
     }
 }

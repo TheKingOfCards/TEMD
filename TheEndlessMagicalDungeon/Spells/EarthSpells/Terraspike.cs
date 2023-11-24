@@ -6,5 +6,6 @@ public class Terraspike: Spell
         damage = 35;
         description = $"Causes spikes to erupt from below the enemy peircing them and dealing {this.name} damage";
         manaCost = 40;
+        color = ConsoleColor.DarkYellow;
     }
 }

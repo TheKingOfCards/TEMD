@@ -1,6 +1,6 @@
 using System.Diagnostics;
 using System.Diagnostics.Contracts;
-using PlayerLogic;
+
 
 public class CharacterCreation
 {
@@ -15,6 +15,15 @@ public class CharacterCreation
 
     public void Creation()
     {
+        Console.WriteLine("Welcome to The Endless Magical Dungeon");
+        Console.WriteLine("You will be fighting monsters and other people for an eternety or until you die");
+
+        Console.WriteLine("You will be using the numbers buttons to move around in the UI");
+        Console.WriteLine("You will be fighting diffrent enemies with increasing stats");
+        Console.WriteLine("Spells use mana and you will only be able to carry 3 spells at a time");
+        Console.WriteLine("And I won't say much more because you will find out by trying/dying");
+        Console.WriteLine("Now you will create your chracter");
+
         SetName();
         ChooseElement();
         ChooseClass();
@@ -46,12 +55,13 @@ public class CharacterCreation
         Console.ForegroundColor = ConsoleColor.Red;
         Console.Write("\n3. Fire");
         Console.ForegroundColor = ConsoleColor.White;
-        Console.Write("\n4. Air\n");
+        Console.Write("\n4. Air");
 
         bool choosing = true;
 
         while (choosing == true)
         {
+            Console.CursorLeft--;
             char input = Console.ReadKey().KeyChar;
 
             choosing = false;
@@ -90,6 +100,8 @@ public class CharacterCreation
         while (choosing == true)
         {
             choosing = false;
+
+            Console.CursorLeft--;
             char input = Console.ReadKey().KeyChar;
 
             if (input == '1')

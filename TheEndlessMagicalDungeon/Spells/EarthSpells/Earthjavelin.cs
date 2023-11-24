@@ -6,5 +6,6 @@ public class Earthjavelin: Spell
         damage = 25;
         description = $"Create a javelin of earth and throw it at the enemy and deal {damage} damage";
         manaCost = 25;
+        color = ConsoleColor.DarkYellow;
     }
 }

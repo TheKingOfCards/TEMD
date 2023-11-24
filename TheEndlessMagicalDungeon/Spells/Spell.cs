@@ -1,9 +1,13 @@
+using System.Drawing;
+
 public class Spell
 {
     public string name = "";
     public string description = "";
     public int damage;
     public int manaCost;
+
+    public ConsoleColor color;
 
     public bool noSpellUsed = false;
 

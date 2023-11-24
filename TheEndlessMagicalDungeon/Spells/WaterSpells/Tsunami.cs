@@ -6,5 +6,6 @@ public class Tsunami: Spell
         damage = 50;
         description = "";
         manaCost = 60;
+        color = ConsoleColor.Blue;
     }
 }

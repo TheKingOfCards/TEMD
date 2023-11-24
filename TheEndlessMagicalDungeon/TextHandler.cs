@@ -1,21 +1,18 @@
 public class TextHandler
 {
-    public void StartText()
+    public void SpellSelect(Spell spell1, Spell spell2, Spell spell3)
     {
-        Console.WriteLine("Welcome to The Endless Magical Dungeon");
-        Console.WriteLine("You will be fighting monsters and other people for an eternety or until you die");
+        Console.ForegroundColor = spell1.color;
+        Console.Write($"1. {spell1.name}");
 
-        Console.WriteLine("You will be using the numbers buttons to move around in the UI");
-        Console.WriteLine("You will be fighting diffrent enemies with increasing stats");
-        Console.WriteLine("Spells use mana and you will only be able to carry 3 spells at a time");
-        Console.WriteLine("And I won't say much more because you will find out by trying/dying");
-        Console.WriteLine("Now you will create your chracter");
-    }
+        Console.ForegroundColor = spell2.color;
+        Console.Write($"\n2. {spell2.name} ");
 
+        Console.ForegroundColor = spell3.color;
+        Console.Write($"\n3. {spell3.name} ");
 
-    public void SpellSelect(string name, string name1, string name2)
-    {
-        Console.WriteLine($"1. {name} \n2. {name1} \n 3. {name2} \n 4. Go Back");
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine("\n4. Go Back");
     }
 
     public void PotionSelect()
