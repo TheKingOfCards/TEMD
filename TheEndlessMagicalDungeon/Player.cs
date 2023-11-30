@@ -21,13 +21,13 @@ public class Player : Entity
                 _mana = 0;
             }
 
-            if(_mana > maxMana)
+            if (_mana > maxMana)
             {
                 _mana = maxMana;
             }
         }
 
-        get => Hp;
+        get => _mana;
     }
     int maxMana = 80;
 
@@ -38,12 +38,13 @@ public class Player : Entity
     int setShieldBlockAmount = 10;
 
     private int xp = 0;
-    int Xp{
+    int Xp
+    {
         set
         {
             xp = value;
 
-            if(xp >= levelUpPoint)
+            if (xp >= levelUpPoint)
             {
                 level++;
                 perkPoints++;
@@ -81,13 +82,14 @@ public class Player : Entity
     {
         maxHealth = 100;
         Hp = maxHealth;
-        _mana = maxMana;
+        Mana = maxMana;
 
         healthPotions = maxHealthPotions;
         manaPotions = maxManaPotions;
 
         tH = new TextHandler();
 
+        //Remove when done
         inventoryWeapons.Add(new Zweihander());
         currentWeapon = inventoryWeapons[0];
         currentSpells.Add(new NoSpell());
@@ -158,21 +160,26 @@ public class Player : Entity
     //Player decide which spell they would like to use
     void SpellSelect(char spellSelect)
     {
+        int.TryParse(spellSelect.ToString(), out int spellSelectNum);
+        
         Spell attackingSpell;
-        if (spellSelect == '1')
+        Spell selectedSpell = currentSpells[spellSelectNum];
+
+        if (spellSelectNum == 1 || spellSelectNum == 2 || spellSelectNum == 3)
         {
-            attackingSpell = currentSpells[1];
-            SpellAttacking(attackingSpell);
-        }
-        else if (spellSelect == '2')
-        {
-            attackingSpell = currentSpells[2];
-            SpellAttacking(attackingSpell);
-        }
-        else if (spellSelect == '3')
-        {
-            attackingSpell = currentSpells[3];
-            SpellAttacking(attackingSpell);
+            if (Mana >= selectedSpell.manaCost)
+            {
+                attackingSpell = selectedSpell;
+                SpellAttacking(attackingSpell);
+            }
+            else
+            {
+                Console.CursorLeft--;
+                Console.WriteLine("You don't have enough mana to use this spell");
+                Console.ReadKey();
+                playerTurn = true;
+                return;
+            }
         }
         else
         {

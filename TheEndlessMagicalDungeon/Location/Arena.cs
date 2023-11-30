@@ -38,6 +38,11 @@ public class Arena
             Player.Dead();
         }
 
+        if(enemy.GetAlive() == false)
+        {
+            
+        }
+
     }
 
 

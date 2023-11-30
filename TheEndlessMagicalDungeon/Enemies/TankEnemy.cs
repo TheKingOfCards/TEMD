@@ -4,7 +4,7 @@ public class TankEnemy : Enemy
     {
         maxHealth = 150;
         Hp = maxHealth;
-        baseDamage = 30;
+        baseDamage = 1;
 
         
         critChance = 5;
