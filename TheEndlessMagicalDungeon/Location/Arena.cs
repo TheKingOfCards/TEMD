@@ -4,10 +4,12 @@ public class Arena
 {
     private Player player;
     private Enemy enemy;
+    private LocaitonLogic lL;
 
     public Arena(Player p)
     {
         player = p;
+        lL = new(this);
     }
 
 
@@ -22,7 +24,7 @@ public class Arena
 
     void Fighting()
     {
-        while (player.GetAlive() && enemy.GetAlive())
+        while (player.GetAlive() && enemy.GetAlive()) //Checks if both entitys are alive and if its their turn
         {
             if (player.GetAlive())
             {
@@ -40,7 +42,8 @@ public class Arena
 
         if(enemy.GetAlive() == false)
         {
-            
+            enemy.Dead();
+            lL.GetNewLocation(player);
         }
 
     }

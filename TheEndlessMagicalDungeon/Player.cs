@@ -29,7 +29,7 @@ public class Player : Entity
 
         get => _mana;
     }
-    int maxMana = 80;
+    int maxMana = 1000;
 
     public int dodgeChance;
     int setdodgeChance = 5;
@@ -292,7 +292,7 @@ public class Player : Entity
     {
         Xp += baseDropXp;
 
-        return xp;
+        return Xp;
     }
 
 

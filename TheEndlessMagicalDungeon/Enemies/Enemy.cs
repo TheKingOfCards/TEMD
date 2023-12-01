@@ -1,8 +1,11 @@
 using System.Diagnostics.Contracts;
+using System.Runtime.InteropServices;
 
 
 public class Enemy : Entity
 {
+    public int XpDrop;
+    public int baseCoinDrop = 15;
     public List<Spell> spells = new();
     public List<String> names = new();
     List<Char> affiliations = new();
@@ -80,7 +83,6 @@ public class Enemy : Entity
         }
 
 
-
         Console.ForegroundColor = ConsoleColor.White;
         if (player.CalcDodge(player.dodgeChance)) //If player dodges
         {
@@ -111,5 +113,33 @@ public class Enemy : Entity
                 Console.ReadKey();
             }
         }
+    }
+
+
+    public int CalcCoin() //Calcs the amount of coins that will drop
+    {
+        int coinDrop = baseCoinDrop;
+        int changeAmount;
+        
+        changeAmount = random.Next(0, 11);
+
+        int index;
+        index = random.Next(0, 2);
+
+        if(index == 0)
+        {
+            coinDrop -= changeAmount;
+        }
+
+        return coinDrop;
+    }
+
+    public void Dead()
+    {
+        player.GetXp(XpDrop);
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine("The monster died");
+        Console.WriteLine($"You got {XpDrop} xp from the monster");
+
     }
 }
