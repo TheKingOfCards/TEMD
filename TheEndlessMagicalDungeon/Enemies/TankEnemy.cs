@@ -2,7 +2,7 @@ public class TankEnemy : Enemy
 {
     public TankEnemy()
     {
-        maxHealth = 150;
+        maxHealth = 15;
         Hp = maxHealth;
         baseDamage = 1;
 

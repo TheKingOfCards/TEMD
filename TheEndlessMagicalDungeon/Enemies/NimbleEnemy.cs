@@ -6,7 +6,7 @@ public class NibmleEnemy : Enemy
             {
             };
 
-        maxHealth = 50;
+        maxHealth = 5;
         Hp = maxHealth;
         baseDamage = 10;
 

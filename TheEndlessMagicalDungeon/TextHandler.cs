@@ -1,6 +1,6 @@
 public class TextHandler
 {
-    public void SpellSelect(Spell spell1, Spell spell2, Spell spell3)
+    public void SpellSelectTH(Spell spell1, Spell spell2, Spell spell3)
     {
         Console.ForegroundColor = spell1.color;
         Console.Write($"1. {spell1.name} ");
@@ -35,5 +35,49 @@ public class TextHandler
         Console.WriteLine("Fire > EARTH > Air");
         Console.WriteLine("Water > FIRE > Earth");
         Console.WriteLine("Earth > AIR > Water");
+    }
+
+
+    public void PlayerInventoryTH(int xp, int level, int levelUpPoint, int coins, string weapon, List<Spell> spells)
+    {
+        Console.WriteLine($"Level: {level}");
+        Console.WriteLine($"Xp: {xp}/{levelUpPoint}");
+        Console.Write($"Coins:");
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine(coins);
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine($"\nWeapon: {weapon}");
+        Console.WriteLine("\nSpells:");
+        for (int i = 1; i < 4; i++)
+        {
+            Console.ForegroundColor = spells[i].color;
+            Console.Write($"\n{spells[i].name}");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine($"\n{spells[i].description}");
+        }
+
+    }
+
+
+    public string DisplayHpOrMana(int currentHp, int maxHp)
+    {
+        string hpDisplay = "[";
+        
+
+        for (int i = 0; i < maxHp; i++)
+        {
+            if(i <= currentHp)
+            {
+                hpDisplay += "|";
+            }
+            else
+            {
+                hpDisplay += " ";
+            }
+        }
+
+        hpDisplay += "]";
+
+        return hpDisplay;
     }
 }

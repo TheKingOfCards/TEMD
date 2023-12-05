@@ -8,12 +8,13 @@ public class LocaitonLogic
 
     Random random = new();
 
-    
+
     List<Enemy> allEnemies;
 
-    public LocaitonLogic(Arena a)
+    public LocaitonLogic(Arena a, Blacksmith bs)
     {
         arena = a;
+        blacksmith = bs;
     }
 
 
@@ -21,11 +22,24 @@ public class LocaitonLogic
     {
         if (player.currentState == Player.PlayerState.isFighting)
         {
-            arena.Start(NewEnemy());
+            int index;
+            index = random.Next(0, 2);
+            index = 0;
+
+            if (index == 0)
+            {
+                player.currentState = Player.PlayerState.inBlacksmith;
+                blacksmith.ChooseAction();
+            }
+            else
+            {
+                player.currentState = Player.PlayerState.inMagicShop;
+            }
         }
 
         if (player.currentState == Player.PlayerState.inBlacksmith || player.currentState == Player.PlayerState.inMagicShop)
         {
+            player.currentState = Player.PlayerState.isFighting;
             arena.Start(NewEnemy());
         }
     }

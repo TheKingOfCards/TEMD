@@ -4,7 +4,7 @@ public class ElementalEnemy : Enemy
 
     public ElementalEnemy()
     {
-        maxHealth = 75;
+        maxHealth = 7;
         Hp = maxHealth;
         baseDamage = 20;
 

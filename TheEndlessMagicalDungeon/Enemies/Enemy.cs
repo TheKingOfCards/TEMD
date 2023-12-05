@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 
 public class Enemy : Entity
 {
-    public int XpDrop;
+    public int XpDrop = 20;
     public int baseCoinDrop = 15;
     public List<Spell> spells = new();
     public List<String> names = new();
@@ -129,6 +129,9 @@ public class Enemy : Entity
         if(index == 0)
         {
             coinDrop -= changeAmount;
+        }else
+        {
+            coinDrop += changeAmount;
         }
 
         return coinDrop;
@@ -136,10 +139,15 @@ public class Enemy : Entity
 
     public void Dead()
     {
+        int baseCoin = 0;
+        Console.Clear();
         player.GetXp(XpDrop);
+        baseCoin += CalcCoin();
+        player.coins += baseCoin;
         Console.ForegroundColor = ConsoleColor.White;
         Console.WriteLine("The monster died");
         Console.WriteLine($"You got {XpDrop} xp from the monster");
-
+        Console.WriteLine($"The monster dropped {baseCoin} coins");
+        Console.ReadKey();
     }
 }

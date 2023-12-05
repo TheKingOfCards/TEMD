@@ -6,7 +6,7 @@ public class WizardEnemy : Enemy
         {
             
         };
-        maxHealth = 75;
+        maxHealth = 7;
         Hp = maxHealth;
         baseDamage = 15;
 

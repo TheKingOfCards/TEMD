@@ -4,8 +4,8 @@ public class AquaBarrier: Spell
     {
         name = "AquaBarrier";
         damage = 0;
-        description = "Incase yourself in water and negate some of the damage";
         manaCost = 60;
+        description = "Incase yourself in water and negate some of the damage";
         color = ConsoleColor.Blue;
     }
 }

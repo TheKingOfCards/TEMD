@@ -4,12 +4,12 @@ using FightingLogic;
 
 Console.Title = "The Endeless Magical Dungeon";
 
-TextHandler tH = new();
 Player player = new();
-Arena arena = new(player);
-Enemy enemy = new TankEnemy();
+player.currentState = Player.PlayerState.inBlacksmith;
 CharacterCreation CC = new(player);
-
+Arena arena = new(player);
+Blacksmith blacksmith = new(player);
+LocaitonLogic lL = new(arena, blacksmith);
 
 bool start = false;
 bool playing = true;
@@ -19,6 +19,7 @@ bool playing = true;
 while (start == true)
 {
     CC.Creation();
+    player.currentState = Player.PlayerState.inBlacksmith;
     Console.ReadKey();
     start = false;
     playing = true;
@@ -27,15 +28,6 @@ while (start == true)
 
 //The gameplay
 while (playing == true)
-{
-    while (player.currentState == Player.PlayerState.isFighting)
-    {
-        arena.Start(enemy);
-    }
-
-
-    while (player.currentState == Player.PlayerState.dead)
-    {
-
-    }
+{    
+    lL.GetNewLocation(player);
 }

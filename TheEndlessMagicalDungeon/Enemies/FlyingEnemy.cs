@@ -3,7 +3,7 @@ public class FlyingEnemy : Enemy
 
     public FlyingEnemy()
     {
-        maxHealth = 75;
+        maxHealth = 7;
         Hp = maxHealth;
         baseDamage = 15;
 

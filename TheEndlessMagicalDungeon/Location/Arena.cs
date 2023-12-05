@@ -5,11 +5,12 @@ public class Arena
     private Player player;
     private Enemy enemy;
     private LocaitonLogic lL;
+    TextHandler tH;
 
     public Arena(Player p)
     {
+        tH = new();
         player = p;
-        lL = new(this);
     }
 
 
@@ -35,15 +36,13 @@ public class Arena
                 EnemyTurn();
             }
         }
-        if(player.GetAlive() == false)
-        {
-            Player.Dead();
-        }
-
+        
+        if(player.GetAlive() == false) Player.Dead();
+        
         if(enemy.GetAlive() == false)
         {
             enemy.Dead();
-            lL.GetNewLocation(player);
+            return;
         }
 
     }
@@ -51,6 +50,7 @@ public class Arena
 
     void PlayerTurn()
     {
+        
         player.playerTurn = true;
         while(player.playerTurn == true)
         {
@@ -72,12 +72,18 @@ public class Arena
     }
 
     //Prints the stats of all entitys
-    static void printAllStats(Player player, Enemy enemy)
+    void printAllStats(Player player, Enemy enemy)
     {
         Console.Clear();
         //Writes player stats
         Console.ForegroundColor = ConsoleColor.White;
-        Console.WriteLine($"[{player.name}] [Hp: {player.Hp}] [Mana: {player.Mana}] [{player.printAffiliation}]");
+        Console.Write($"[{player.name}] ");
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.Write($"{tH.DisplayHpOrMana(player.Hp, player.maxHealth)} ");
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.WriteLine($"{tH.DisplayHpOrMana(player.Mana, player.maxMana)}");
+        Console.ForegroundColor = ConsoleColor.White;
+        
         Console.Write("Potions: ");
         Console.ForegroundColor = ConsoleColor.Red;
         Console.Write($"{player.healthPotions} ");
@@ -85,6 +91,10 @@ public class Arena
         Console.WriteLine($"{player.manaPotions}");
         //Writes enemy stats
         Console.ForegroundColor = ConsoleColor.DarkRed;
-        Console.WriteLine($"Enemy: [{enemy.name}] [Hp: {enemy.Hp}] [{enemy.printAffiliation}]\n ");
+        Console.Write($"\n[{enemy.name}] ");
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine($"[{enemy.printAffiliation}]");
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine(tH.DisplayHpOrMana(enemy.Hp, enemy.maxHealth));
     }
 }

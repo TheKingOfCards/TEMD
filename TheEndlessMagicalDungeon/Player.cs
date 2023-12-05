@@ -6,7 +6,7 @@ using System.Runtime.ExceptionServices;
 
 public class Player : Entity
 {
-    public PlayerState currentState = PlayerState.isFighting;
+    public PlayerState currentState;
     public PlayerClass currentClass;
     public PlayerElement currentElement;
 
@@ -29,7 +29,7 @@ public class Player : Entity
 
         get => _mana;
     }
-    int maxMana = 1000;
+    public int maxMana = 10;
 
     public int dodgeChance;
     int setdodgeChance = 5;
@@ -38,26 +38,27 @@ public class Player : Entity
     int setShieldBlockAmount = 10;
 
     private int xp = 0;
-    int Xp
+    public int Xp
     {
         set
         {
             xp = value;
 
-            if (xp >= levelUpPoint)
+            while(xp >= levelUpPoint)
             {
                 level++;
                 perkPoints++;
                 xp -= levelUpPoint;
+                levelUpPoint += 5;
             }
         }
 
         get => xp;
     }
-    int levelUpPoint = 50;
-    int coins = 0;
-    int level = 0;
-    int perkPoints = 0;
+    public int levelUpPoint = 5;
+    public int coins = 0;
+    public int level = 0;
+    public int perkPoints = 0;
 
     public int healthPotions = 0;
     int maxHealthPotions = 5;
@@ -80,7 +81,7 @@ public class Player : Entity
 
     public Player()
     {
-        maxHealth = 100;
+        maxHealth = 10;
         Hp = maxHealth;
         Mana = maxMana;
 
@@ -105,19 +106,7 @@ public class Player : Entity
         if (currentState == PlayerState.isFighting)
         {
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("1. Physical Action \n2. Spells \n3. Potions");
-        }
-        else if (currentState == PlayerState.isLooting)
-        {
-
-        }
-        else if (currentState == PlayerState.inBlacksmith)
-        {
-
-        }
-        else if (currentState == PlayerState.inMagicShop)
-        {
-
+            Console.WriteLine("1. Physical Action \n2. Spells \n3. Potions \n4. Inventory");
         }
     }
 
@@ -135,7 +124,7 @@ public class Player : Entity
             }
             else if (playerInput == '2')
             {
-                tH.SpellSelect(currentSpells[1], currentSpells[2], currentSpells[3]);
+                tH.SpellSelectTH(currentSpells[1], currentSpells[2], currentSpells[3]);
                 SpellSelect(Console.ReadKey().KeyChar);
             }
             else if (playerInput == '3')
@@ -143,10 +132,19 @@ public class Player : Entity
                 tH.PotionSelect();
                 UsePotions(Console.ReadKey().KeyChar);
             }
-        }
-        else if (currentState == PlayerState.isLooting) //The actions the player can take while looting
-        {
-
+            else if(playerInput == '4')
+            {
+                Console.Clear();
+                tH.PlayerInventoryTH(Xp, level, levelUpPoint, coins, currentWeapon.name, currentSpells);
+                Console.ReadKey();
+                playerTurn = true;
+                return;
+            }
+            else
+            {
+                playerTurn = true;
+                return;
+            }
         }
     }
 
@@ -311,10 +309,8 @@ public class Player : Entity
     public enum PlayerState
     {
         isFighting,
-        isLooting,
         inBlacksmith,
         inMagicShop,
-        dead
     }
 
     public enum PlayerClass
