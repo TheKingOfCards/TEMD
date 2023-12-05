@@ -8,7 +8,7 @@ public class NibmleEnemy : Enemy
 
         maxHealth = 5;
         Hp = maxHealth;
-        baseDamage = 10;
+        baseDamage = 2;
 
         names.Add("Assassin");
         names.Add("Thief");

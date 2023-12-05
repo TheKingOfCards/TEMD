@@ -3,7 +3,7 @@ public class Zweihander: Weapon
     public Zweihander()
     {
         name = "Zweihander";
-        baseDamage = 30;
+        baseDamage = 3;
         baseCritChance = 15;
     }
 }

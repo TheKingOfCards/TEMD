@@ -4,7 +4,7 @@ using System.Diagnostics.Contracts;
 using FightingLogic;
 using System.Runtime.ExceptionServices;
 
-public class Player : Entity
+public class Player : Effects
 {
     public PlayerState currentState;
     public PlayerClass currentClass;
@@ -161,10 +161,10 @@ public class Player : Entity
         int.TryParse(spellSelect.ToString(), out int spellSelectNum);
         
         Spell attackingSpell;
-        Spell selectedSpell = currentSpells[spellSelectNum];
 
         if (spellSelectNum == 1 || spellSelectNum == 2 || spellSelectNum == 3)
         {
+            Spell selectedSpell = currentSpells[spellSelectNum];
             if (Mana >= selectedSpell.manaCost)
             {
                 attackingSpell = selectedSpell;
@@ -197,6 +197,10 @@ public class Player : Entity
             Mana -= attackingSpell.manaCost;
             Console.WriteLine($"You attacked the monster with {attackingSpell.name} dealing {attackingSpell.damage} damage and using {attackingSpell.manaCost} mana");
             Console.ReadKey();
+        }
+        if(attackingSpell.canSetOnFire == true)
+        {
+            currentEnemy.isBurning = true;
         }
     }
 
@@ -242,6 +246,7 @@ public class Player : Entity
                     Hp = maxHealth;
                 }
                 Console.ForegroundColor = ConsoleColor.White;
+                dodgeChance = setdodgeChance / 2;
                 Console.WriteLine($"You healed {healthPotionHealAmount} hp points");
                 Console.ReadKey();
             }
@@ -249,6 +254,7 @@ public class Player : Entity
             {
                 Console.WriteLine("\nYou dont have any health potions left");
                 Console.ReadKey();
+                playerTurn = true;
             }
         }
         else if (potionSelect == '2') //Raises the players mana
@@ -261,12 +267,16 @@ public class Player : Entity
                 {
                     _mana = maxMana;
                 }
+                Console.ForegroundColor = ConsoleColor.White;
+                dodgeChance = setdodgeChance / 2;
                 Console.WriteLine($"You restored {manaPotionRaiseAmount} mana points");
+                Console.ReadKey();
             }
             else
             {
                 Console.WriteLine("\nYou dont have any mana potions left");
                 Console.ReadKey();
+                playerTurn = true;
             }
         }
         else

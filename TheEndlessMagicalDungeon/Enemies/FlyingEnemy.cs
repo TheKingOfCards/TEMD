@@ -5,7 +5,7 @@ public class FlyingEnemy : Enemy
     {
         maxHealth = 7;
         Hp = maxHealth;
-        baseDamage = 15;
+        baseDamage = 2;
 
         names.Add("Skyborne Harrier");
         names.Add("Aerial Seraph");

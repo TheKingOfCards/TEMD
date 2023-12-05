@@ -48,6 +48,7 @@ public class TextHandler
         Console.ForegroundColor = ConsoleColor.White;
         Console.WriteLine($"\nWeapon: {weapon}");
         Console.WriteLine("\nSpells:");
+        Console.WriteLine("[You can't change spells during combat]");
         for (int i = 1; i < 4; i++)
         {
             Console.ForegroundColor = spells[i].color;

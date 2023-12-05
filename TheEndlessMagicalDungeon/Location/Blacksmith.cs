@@ -20,6 +20,7 @@ public class Blacksmith
 
     public void ChooseAction() //Choose to buy a new weapon or upgrade one of your weapons
     {
+        Console.Clear();
         Console.WriteLine("Hello fighter, what would you like to do here in my blacksmith");
         Console.WriteLine("\n1. Buy weapon \n2. Upgrade weapon \n3. Inventory \n4. Leave");
         char input = Console.ReadKey().KeyChar;

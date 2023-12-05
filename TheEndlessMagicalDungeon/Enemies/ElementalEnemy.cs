@@ -6,7 +6,7 @@ public class ElementalEnemy : Enemy
     {
         maxHealth = 7;
         Hp = maxHealth;
-        baseDamage = 20;
+        baseDamage = 3;
 
         elementalAffiliation.Add('F');
         elementalAffiliation.Add('E');
@@ -18,8 +18,8 @@ public class ElementalEnemy : Enemy
     }
 
 
-    //Has seperate because it most have a affiliation
-    public void ElementalGetAffiliation()
+    //Has seperate because it must have a affiliation
+    void ElementalGetAffiliation()
     {
         int index = random.Next(elementalAffiliation.Count);
 
@@ -46,7 +46,7 @@ public class ElementalEnemy : Enemy
 
 
     //Has sperate because the name depends on its affiliation
-    public void ElementalGetName(char affiliation)
+    void ElementalGetName(char affiliation)
     {
         if (affiliation == 'F')
         {

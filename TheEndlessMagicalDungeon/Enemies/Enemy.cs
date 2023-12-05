@@ -2,7 +2,7 @@ using System.Diagnostics.Contracts;
 using System.Runtime.InteropServices;
 
 
-public class Enemy : Entity
+public class Enemy : Effects
 {
     public int XpDrop = 20;
     public int baseCoinDrop = 15;

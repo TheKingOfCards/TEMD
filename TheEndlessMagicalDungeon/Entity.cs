@@ -1,4 +1,4 @@
-public class Entity : Effects
+public class Entity
 {
     public string name = "";
     private int _hp = 0;
