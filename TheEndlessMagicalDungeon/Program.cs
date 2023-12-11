@@ -1,4 +1,5 @@
-﻿using System.Net.Mime;
+﻿using System.Diagnostics.SymbolStore;
+using System.Net.Mime;
 using FightingLogic;
 
 
@@ -11,8 +12,8 @@ Arena arena = new(player);
 Blacksmith blacksmith = new(player);
 LocaitonLogic lL = new(arena, blacksmith);
 
-bool start = false;
-bool playing = true;
+bool start = true;
+bool playing = false;
 
 
 //The start of the game, choose type, name, affiliation and information
@@ -20,7 +21,6 @@ while (start == true)
 {
     CC.Creation();
     player.currentState = Player.PlayerState.inBlacksmith;
-    Console.ReadKey();
     start = false;
     playing = true;
 }
@@ -29,5 +29,9 @@ while (start == true)
 //The gameplay
 while (playing == true)
 {    
+    player.inventoryWeapons.Add(new Halberd());
+    player.inventoryWeapons.Add(new Katana());
+    player.inventoryWeapons.Add(new Dagger());
+
     lL.GetNewLocation(player);
 }

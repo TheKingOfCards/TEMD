@@ -37,8 +37,8 @@ public class TextHandler
         Console.WriteLine("Earth > AIR > Water");
     }
 
-
-    public void PlayerInventoryTH(int xp, int level, int levelUpPoint, int coins, string weapon, List<Spell> spells)
+    
+    public void FightingInventoryTH(int xp, int level, int levelUpPoint, int coins, Weapon currentW, List<Spell> spells)
     {
         Console.WriteLine($"Level: {level}");
         Console.WriteLine($"Xp: {xp}/{levelUpPoint}");
@@ -46,7 +46,7 @@ public class TextHandler
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine(coins);
         Console.ForegroundColor = ConsoleColor.White;
-        Console.WriteLine($"\nWeapon: {weapon}");
+        Console.WriteLine($"\nWeapon: {currentW.name} | Damage: {currentW.baseDamage}");
         Console.WriteLine("\nSpells:");
         Console.WriteLine("[You can't change spells during combat]");
         for (int i = 1; i < 4; i++)
@@ -63,11 +63,11 @@ public class TextHandler
     public string DisplayHpOrMana(int currentHp, int maxHp)
     {
         string hpDisplay = "[";
-        
+
 
         for (int i = 0; i < maxHp; i++)
         {
-            if(i <= currentHp)
+            if (i <= currentHp)
             {
                 hpDisplay += "|";
             }

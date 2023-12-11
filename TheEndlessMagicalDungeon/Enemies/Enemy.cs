@@ -88,7 +88,6 @@ public class Enemy : Effects
         {
             damage = 0;
             Console.WriteLine("You dodged the attack and took 0 damage");
-            player.dodgeChance = 0;
             Console.ReadKey();
         }
         else //If player dosen't dodge
@@ -103,13 +102,11 @@ public class Enemy : Effects
             {
                 player.Hp -= damage - player.shieldBlockAmount;
                 Console.WriteLine($"You blocked {player.shieldBlockAmount} damage from the attack but was still hit for {damage - player.shieldBlockAmount}");
-                player.shieldBlockAmount = 0;
                 Console.ReadKey();
             }
             else if (damage - player.shieldBlockAmount <= 0) //If player used shield to block all damage
             {
                 Console.WriteLine("You used your shield to block all damage");
-                player.shieldBlockAmount = 0;
                 Console.ReadKey();
             }
         }

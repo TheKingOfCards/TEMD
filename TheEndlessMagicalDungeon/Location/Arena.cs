@@ -43,6 +43,8 @@ public class Arena
 
         if (enemy.GetAlive() == false)
         {
+            player.Hp = player.maxHealth;
+            player.Mana = player.maxMana;
             enemy.Dead();
         }
 
@@ -87,8 +89,12 @@ public class Arena
         //Writes player stats
         Console.ForegroundColor = ConsoleColor.White;
         Console.Write($"[{player.name}] ");
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.Write("Hp: ");
         Console.ForegroundColor = ConsoleColor.Red;
         Console.Write($"{tH.DisplayHpOrMana(player.Hp, player.maxHealth)} ");
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.Write("Mana: ");
         Console.ForegroundColor = ConsoleColor.Blue;
         Console.WriteLine($"{tH.DisplayHpOrMana(player.Mana, player.maxMana)}");
         Console.ForegroundColor = ConsoleColor.White;

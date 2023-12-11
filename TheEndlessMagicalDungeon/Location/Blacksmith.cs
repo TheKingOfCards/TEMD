@@ -1,4 +1,4 @@
-public class Blacksmith
+public class Blacksmith : ShopLogic
 {
     Player player;
     Random random = new();
@@ -20,26 +20,43 @@ public class Blacksmith
 
     public void ChooseAction() //Choose to buy a new weapon or upgrade one of your weapons
     {
-        Console.Clear();
-        Console.WriteLine("Hello fighter, what would you like to do here in my blacksmith");
-        Console.WriteLine("\n1. Buy weapon \n2. Upgrade weapon \n3. Inventory \n4. Leave");
-        char input = Console.ReadKey().KeyChar;
+        bool choosing = true;
 
-        if (input == '1')
+        while (choosing)
         {
-            Buying();
-        }
-        else if (input == '2')
-        {
-            Upgrade();
-        }
-        else if (input == '3')
-        {
-            
-        }
-        else 
-        {
+            choosing = false;
+            Console.Clear();
+            Console.WriteLine("Hello fighter, what would you like to do here in my blacksmith");
+            Console.WriteLine($"Coins: {player.coins}");
+            Console.WriteLine("\n1. Buy weapon \n2. Upgrade weapon \n3. Inventory \n4. Leave");
+            char input = Console.ReadKey().KeyChar;
 
+            if (input == '1')
+            {
+                Buying();
+            }
+            else if (input == '2')
+            {
+                Upgrade();
+            }
+            else if (input == '3')
+            {
+                Console.Clear();
+                Console.WriteLine("1. Switch weapon \n2. Switch spells");
+                char chooseChar = Console.ReadKey().KeyChar;
+                if (chooseChar == '1')
+                {
+                    ChangeWeapon(player.inventoryWeapons, player.currentWeapon);
+                }
+                else if(chooseChar == '2')
+                {
+
+                }
+            }
+            else
+            {
+                choosing = true;
+            }
         }
     }
 

@@ -34,7 +34,7 @@ public class CharacterCreation
     {
         Console.WriteLine("Now fighter, what is your name?");
         player.name = Console.ReadLine();
-        Console.WriteLine($"Okay.. {player.name}... Your mother wasn't very nice to you huh?");
+        Console.WriteLine($"Okay {player.name}");
         Console.ReadKey();
         Console.Clear();
     }
@@ -55,13 +55,12 @@ public class CharacterCreation
         Console.ForegroundColor = ConsoleColor.Red;
         Console.Write("\n3. Fire");
         Console.ForegroundColor = ConsoleColor.White;
-        Console.Write("\n4. Air");
+        Console.Write("\n4. Air\n");
 
         bool choosing = true;
 
         while (choosing == true)
         {
-            Console.CursorLeft--;
             char input = Console.ReadKey().KeyChar;
 
             choosing = false;
@@ -93,7 +92,7 @@ public class CharacterCreation
 
     void ChooseClass()
     {
-        Console.WriteLine("Which class do you want to be?");
+        Console.WriteLine("Which class do you want to be?\n");
         Console.WriteLine("1. Barbarian \n2. Knight \n3. Wizard \n4. Assasin");
         bool choosing = true;
 
@@ -101,7 +100,6 @@ public class CharacterCreation
         {
             choosing = false;
 
-            Console.CursorLeft--;
             char input = Console.ReadKey().KeyChar;
 
             if (input == '1')
@@ -122,7 +120,7 @@ public class CharacterCreation
             }
             else
             {
-                Console.WriteLine("\nUse one of the options above idiota");
+                Console.WriteLine("\nUse one of the options above");
                 choosing = true;
             }
         }

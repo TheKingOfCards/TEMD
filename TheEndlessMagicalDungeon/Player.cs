@@ -44,7 +44,7 @@ public class Player : Effects
         {
             xp = value;
 
-            while(xp >= levelUpPoint)
+            while (xp >= levelUpPoint)
             {
                 level++;
                 perkPoints++;
@@ -57,7 +57,7 @@ public class Player : Effects
     }
     public int levelUpPoint = 5;
     public int coins = 0;
-    public int level = 0;
+    int level = 0;
     public int perkPoints = 0;
 
     public int healthPotions = 0;
@@ -73,7 +73,9 @@ public class Player : Effects
     public List<Spell> currentSpells = new();
     public List<Spell> inventorySpells = new();
     public List<Weapon> inventoryWeapons = new();
-    Weapon currentWeapon;
+    public Weapon currentWeapon;
+
+    Random random = new();
 
     Enemy currentEnemy;
     TextHandler tH;
@@ -91,8 +93,7 @@ public class Player : Effects
         tH = new TextHandler();
 
         //Remove when done
-        inventoryWeapons.Add(new Zweihander());
-        currentWeapon = inventoryWeapons[0];
+        currentWeapon = new Zweihander();
         currentSpells.Add(new NoSpell());
         currentSpells.Add(new Pyroorb());
         currentSpells.Add(new Tsunami());
@@ -117,25 +118,25 @@ public class Player : Effects
         Console.ForegroundColor = ConsoleColor.White;
         if (currentState == PlayerState.isFighting) //The actions the player can take while fighting
         {
-            if (playerInput == '1')
+            if (playerInput == '1') //Physical action
             {
                 Console.WriteLine("1. Attack \n2. Shield \n3. Dodge \n4. Go Back \n");
                 UsePhysical(Console.ReadKey().KeyChar);
             }
-            else if (playerInput == '2')
+            else if (playerInput == '2') //Spell action
             {
                 tH.SpellSelectTH(currentSpells[1], currentSpells[2], currentSpells[3]);
                 SpellSelect(Console.ReadKey().KeyChar);
             }
-            else if (playerInput == '3')
+            else if (playerInput == '3') //Potion select
             {
                 tH.PotionSelect();
                 UsePotions(Console.ReadKey().KeyChar);
             }
-            else if(playerInput == '4')
+            else if (playerInput == '4') //Inventory
             {
                 Console.Clear();
-                tH.PlayerInventoryTH(Xp, level, levelUpPoint, coins, currentWeapon.name, currentSpells);
+                tH.FightingInventoryTH(Xp, level, levelUpPoint, coins, currentWeapon, currentSpells);
                 Console.ReadKey();
                 playerTurn = true;
                 return;
@@ -159,7 +160,7 @@ public class Player : Effects
     void SpellSelect(char spellSelect)
     {
         int.TryParse(spellSelect.ToString(), out int spellSelectNum);
-        
+
         Spell attackingSpell;
 
         if (spellSelectNum == 1 || spellSelectNum == 2 || spellSelectNum == 3)
@@ -191,16 +192,20 @@ public class Player : Effects
     {
         Console.ForegroundColor = ConsoleColor.White;
         Console.CursorLeft--;
-        if (attackingSpell.damage > 0)
+        if (attackingSpell.damage > 0) //Damages the enemy
         {
             currentEnemy.Hp -= attackingSpell.damage;
             Mana -= attackingSpell.manaCost;
             Console.WriteLine($"You attacked the monster with {attackingSpell.name} dealing {attackingSpell.damage} damage and using {attackingSpell.manaCost} mana");
             Console.ReadKey();
         }
-        if(attackingSpell.canSetOnFire == true)
+
+        if (attackingSpell.canSetOnFire == true) //If the spell can set on fire do ranomize to set on fire
         {
-            currentEnemy.isBurning = true;
+            int index = 0;
+            index = random.Next(0, 5);
+
+            if (index == 0) currentEnemy.isBurning = true;
         }
     }
 
@@ -208,11 +213,13 @@ public class Player : Effects
     //Player can either attack, use spells or get a higher dodge chance
     void UsePhysical(char physicalSelect)
     {
-        Console.CursorLeft--;
+        shieldBlockAmount = 0;
+        dodgeChance = 0;
+
         if (physicalSelect == '1') //Attack
         {
             currentEnemy.Hp -= currentWeapon.baseDamage;
-            Console.WriteLine($"You attacked {currentEnemy.name} with your {currentWeapon.name} dealing {currentWeapon.baseDamage}");
+            Console.WriteLine($"\nYou attacked {currentEnemy.name} with your {currentWeapon.name} dealing {currentWeapon.baseDamage}");
             Console.ReadKey();
         }
         else if (physicalSelect == '2') //Shield
@@ -294,8 +301,7 @@ public class Player : Effects
     }
 
 
-
-    //Takes in the base xp from enemies killed and adds it to player xp (multipliers)
+    //Takes in the xp the enemy droped adds it to players xp
     public int GetXp(int baseDropXp)
     {
         Xp += baseDropXp;
@@ -304,6 +310,7 @@ public class Player : Effects
     }
 
 
+    //If the player dies
     public static void Dead()
     {
         Console.Clear();
@@ -316,14 +323,14 @@ public class Player : Effects
     }
 
 
-    public enum PlayerState
+    public enum PlayerState //The state the player is currently in
     {
         isFighting,
         inBlacksmith,
         inMagicShop,
     }
 
-    public enum PlayerClass
+    public enum PlayerClass //The class the player choose in the begining
     {
         barb,
         wizard,
@@ -331,7 +338,7 @@ public class Player : Effects
         assasin
     }
 
-    public enum PlayerElement
+    public enum PlayerElement //The element the player choose in the begining
     {
         fire,
         water,
